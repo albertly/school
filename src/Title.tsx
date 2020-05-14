@@ -3,8 +3,6 @@ import { makeStyles, Theme, createMuiTheme } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
-import Title from './Title';
-import MainCategories from './MainCategories';
 
 const useStyles = makeStyles((theme: Theme) => {
 
@@ -35,24 +33,27 @@ const useStyles = makeStyles((theme: Theme) => {
     })
 });
 
-function Main() {
+function Title() {
     const classes = useStyles();
 
     return (
 
         <Grid container spacing={0}>
-        <Grid item  xs={12}>
-          <Paper className={classes.paper}><Title/></Paper>
+        <Grid item  xs={1}>
+          <Paper className={classes.paper}>xs=3</Paper>
         </Grid>
-        <Grid item xs={10}>
+        <Grid item  xs={2}>
+          <Paper className={classes.paper}>xs=3</Paper>
+        </Grid>
+        <Grid item xs={7}>
           <Paper className={classes.paper}>xs=3</Paper>
         </Grid>
         <Grid item xs={2}>
-          <Paper className={classes.paper}><MainCategories /></Paper>
+          <Paper className={classes.paper}>xs=3</Paper>
         </Grid>
       </Grid>
 
     );
 }
 
-export default Main;
+export default Title;
