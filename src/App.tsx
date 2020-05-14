@@ -1,25 +1,41 @@
 import React from 'react';
-import logo from './logo.svg';
+import AppBar from '@material-ui/core/AppBar';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { makeStyles, Theme, createMuiTheme } from '@material-ui/core/styles';
+
+
+import Main from './Main';
 import './App.css';
 
+
+const useStyles = makeStyles((theme: Theme) => {
+
+  theme = createMuiTheme({
+    direction: "rtl",
+  });
+
+  return ({
+    root: {
+      display: 'flex',
+      background: '#2E7D32'
+    },
+
+  })
+});
+
 function App() {
+  const classes = useStyles();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+      <div>
+        <CssBaseline />
+        <AppBar className={classes.root}  position="sticky" elevation={0}>
+          <h1></h1>
+        </AppBar>
+        <Main/>
+      </div>
+
   );
 }
 
