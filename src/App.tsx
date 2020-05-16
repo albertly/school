@@ -30,10 +30,10 @@ function App() {
 
       <div>
         <CssBaseline />
-        <AppBar className={classes.root}  position="sticky" elevation={0}>
-          <h1></h1>
+        <AppBar data-test={'AppBar-component'} className={classes.root}  position="sticky" elevation={0}>
+          <h1>learn react</h1>
         </AppBar>
-        <Main/>
+        <Main data-test={'Main-component'}/>
       </div>
 
   );
