@@ -17,7 +17,9 @@ const useStyles = makeStyles((theme: Theme) => {
   return ({
     root: {
       display: 'flex',
-      background: '#2E7D32'
+      background: '#2E7D32',
+      margin: theme.spacing(0),
+      height: '56px'
     },
 
   })
@@ -31,7 +33,6 @@ function App() {
       <div>
         <CssBaseline />
         <AppBar data-test={'AppBar-component'} className={classes.root}  position="sticky" elevation={0}>
-          <h1>learn react</h1>
         </AppBar>
         <Main data-test={'Main-component'}/>
       </div>
