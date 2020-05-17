@@ -3,6 +3,7 @@ import { makeStyles, Theme, createMuiTheme } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
+import MainTable from './MainTable';
 import Title from './Title';
 import MainCategories from './MainCategories';
 
@@ -42,7 +43,7 @@ function Main() {
                 <Paper className={classes.paper} elevation={0} square><MainCategories /></Paper>
             </Grid>
             <Grid item xs={10}>
-                <Paper className={classes.paper} elevation={0} square>xs=3</Paper>
+                <Paper className={classes.paper} elevation={0} square><MainTable/></Paper>
             </Grid>
 
         </Grid>
