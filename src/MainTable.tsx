@@ -10,20 +10,27 @@ import {
     TableHeaderRow,
     TableGroupRow,
     Toolbar,
+    TableRowDetail,
     
 } from '@devexpress/dx-react-grid-material-ui';
 
 
 import { generateRows } from './demo-data/generator';
 
+const CellContent = (cell: Table.DataCellProps) => {
+    console.log('cell', cell)
+    return (
+        
+    <td>{cell.value}</td>
+    )
+}
 const GroupRowContent: (row:any)=> any  = ({ row }) => (
-    <span>
+    <td>
 
         <strong>
-            {row.value}
-            <br />
+            {row.value}        
         </strong>
-    </span>
+    </td>
 );
 
 export default () => {
@@ -44,10 +51,12 @@ export default () => {
 
                 <GroupingState defaultExpandedGroups={['Las Vegas', 'Paris', 'Austin', 'London', 'Chicago']} defaultGrouping={[{ columnName: 'city' }]} />
                 <IntegratedGrouping />
-                <Table />
+                <Table cellComponent={CellContent} />
+                {/* <Table  /> */}
                 <TableHeaderRow />
+                {/* <TableRowDetail /> */}
                 <TableGroupRow
-                    rowComponent={GroupRowContent}
+                   // rowComponent={GroupRowContent}
                     showColumnsWhenGrouped={false} />
                 <Toolbar />
             </Grid>

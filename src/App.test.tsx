@@ -8,7 +8,7 @@ import { setup, findByTestAttr} from './TestHelpers';
 import App from './App';
 
 
-test('renders without error', () => {
+test.skip('renders without error', () => {
   const wrapper = setup(App);
 
   const appComponent1 = findByTestAttr(wrapper, 'Main-component');
@@ -21,7 +21,7 @@ test('renders without error', () => {
 
 });
 
-test('renders learn react link', () => {
+test.skip('renders learn react link', () => {
   const { getByText } = render(<App />);
   const linkElement = getByText(/learn react/i);
   expect(linkElement).toBeInTheDocument();

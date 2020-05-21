@@ -3,7 +3,7 @@ import { makeStyles, Theme, createMuiTheme } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
-import MainTable from './MainTable';
+import MainTable from './MainTable1';
 import Title from './Title';
 import MainCategories from './MainCategories';
 

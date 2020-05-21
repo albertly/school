@@ -15,7 +15,7 @@ const setup = (Componet: any, props={}, state:any=null) => {
     return wrapper;
 }
 
-describe('Main component',()=>{
+describe.skip('Main component',()=>{
 
     it('should render',()=>{
         const main = render(<Main />);
