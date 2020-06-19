@@ -21,10 +21,6 @@ const useStylesListItemText = makeStyles({
 
 const useStyles = makeStyles((theme: Theme) => {
 
-    theme = createMuiTheme({
-        direction: "rtl",
-    });
-
     return ({
         root: {
             width: '100%',
