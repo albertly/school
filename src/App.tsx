@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme: Theme) => {
       display: 'flex',
       background: '#2E7D32',
       margin: theme.spacing(0),
-      height: '56px'
+      height: '56px',
     },
 
   })
