@@ -22,6 +22,8 @@ div {
     margin-top: 25px;
     margin-right: 20px;
     margin-left: 50px;
+
+    overflow: auto;
   
 }
 
@@ -45,13 +47,50 @@ div {
     text-align: center;  
     position: relative; 
 }
-.Mark70 {
+.one {
     background-color: #e5ecda;
 }
-.Mark80 {
+.two {
     background-color: #c6d8ae;
 }
-.Mark100 {
+
+.three {
     background-color: #1b925a;
     color: white;
+}
+
+.two-down {
+    position: absolute;
+    border-style: solid;
+    border-color: transparent transparent transparent #1b925a;
+    border-width: 12px 0 12px 15px;
+    top: 40%;
+    left: 0;
+}
+
+.two-up {
+    position: absolute;
+    border-style: solid;
+    border-color: transparent #e5ecda  transparent transparent;
+    border-width: 12px 15px  12px 0;
+    top: 40%;
+    right: 0;
+}
+
+.three-up {
+    position: absolute;
+    border-style: solid;
+    border-color: transparent #c6d8ae  transparent transparent;
+    border-width: 12px 15px  12px 0;
+    top: 40%;
+    right: 0;
+}
+
+.one-down {
+    position: absolute;
+    border-style: solid;
+    border-color: transparent transparent transparent #c6d8ae;
+    border-width: 12px 0 12px 15px;
+    top: 40%;
+    left: 0;
 }

@@ -6,7 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import MainTable from './MainTable2';
 import Title from './Title';
 import MainCategories from './MainCategories';
-
+import { buildCombo, ICombo } from './MarksData';
 const useStyles = makeStyles((theme: Theme) => {
     return ({
 
@@ -28,9 +28,15 @@ const useStyles = makeStyles((theme: Theme) => {
     })
 });
 
-function Main() {
+// { key }: { key: string;} 
+function Main(props: any) {
     const classes = useStyles();
 
+    // let { key }: { key: string;} = props;
+
+    let topic: any = props.topic;
+    console.log('Main key', topic);
+    console.log('Main props', props)
     return (
 
         <Grid container spacing={0}>
@@ -41,7 +47,7 @@ function Main() {
                 <Paper className={classes.paper} elevation={0} square><MainCategories /></Paper>
             </Grid>
             <Grid item xs={10}>
-                <Paper className={classes.paper} elevation={0} square><MainTable/></Paper>
+                <Paper className={classes.paper} elevation={0} square><MainTable topic={topic} /></Paper>
             </Grid>
 
         </Grid>

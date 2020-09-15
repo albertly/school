@@ -58,7 +58,7 @@ function Title() {
 
         <Grid container spacing={0}>
             <Grid item xs={3}>
-                <Paper className={classes.paper} style={{ textAlign: 'right' }} elevation={0} square><img style={{ height: '90px', textAlign: 'right', margin: '10px' }} src="logo-hh.png" /></Paper>
+                <Paper className={classes.paper} style={{ textAlign: 'right' }} elevation={0} square><img style={{ height: '90px', textAlign: 'right', margin: '10px' }} src="logo-hh.png" alt="logo" /></Paper>
             </Grid>
 
             <Grid item xs={6}>

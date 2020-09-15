@@ -1,4 +1,4 @@
-import {  buildGrid,   Cell } from './MarksData';
+import {  buildGrid, buildCombo, preMerge, generateMarks, Cell } from './MarksData';
 import data from '../all1.json'
 
 describe.only('Main Table', () => {
@@ -30,7 +30,7 @@ describe.only('Main Table', () => {
 
    // });
 
-   it.only('should read JSON', () => {
+   it('should read JSON', () => {
             /* -KWOsozzNKWfrlMj3eHc */
             /* -KWOZhsbMZ31lao9TAa3 */
       const key = '-KWOsozzNKWfrlMj3eHc';
@@ -41,4 +41,25 @@ describe.only('Main Table', () => {
       const result: Cell[] = buildGrid(data.d.b.d[key]);
    })
 
+   it('should build Combo', () => {
+      const v = buildCombo(data.d.b.d);
+
+      console.log(v);
+   })
+
+   it.only('should generate marks', () => {
+
+      let v: any =  '-KWOsozzNKWfrlMj3eHc';
+      let a: any = data.d.b.d;
+      let o = a[v];
+
+      const marks = generateMarks(o);
+
+      const cells = buildGrid(o);
+
+      const f = preMerge(marks);
+      cells.map(cell => f(cell));
+      console.log('marks', marks);
+      console.log('cells', cells);
+   })
 });
