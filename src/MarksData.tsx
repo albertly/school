@@ -1,4 +1,5 @@
 import React from 'react';
+import studentSubjects from './student_subjects.json';
 
 export interface ICell {
     topicId: string;
@@ -16,15 +17,73 @@ interface ICellStyle {
     gridColumn?: string
 }
 
-export function preMerge(marks: IMarks[]): any {
+interface IMark {
+    topicId: string,
+    mark: number,
+}
+
+export interface ICombo {
+    code: string,
+    value: string,
+}
+
+interface ISubject {
+    sub: string
+}
+
+export function getSubjectsForStudent(data: any) : any[] {
+    const subjects: any[] = [];
+    studentSubjects.forEach((subject:ISubject) => {
+        subjects.push(data[subject.sub]);
+    });
+
+    return subjects;
+}
+
+function getRandomInt(min = 1, max = 3): number {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+export function generateMarks(data: any): IMark[] {
+    const marks: IMark[] = [];
+    for (const [key, value] of Object.entries(data)) {
+        console.log(`${key}: ${value}`);
+        const v: any = value;
+        if (v.columns) {
+            marks.push({ topicId: key, mark: getRandomInt(50, 100), });
+        }
+    }
+
+    return marks;
+}
+
+export function buildCombo(data: any): ICombo[] {
+    const list: ICombo[] = [];
+
+    for (const name in data) {
+        if (data.hasOwnProperty(name) && Object.keys(data[name]).length > 1) {
+
+            const item = {
+                code: name,
+                value: data[name][Object.keys(data[name])[0]].name as string,
+            }
+
+            list.push(item);
+
+        }
+    }
+
+    return list;
+}
+
+export function preMerge(marks: IMark[]): any {
     let topicId: string = '';
     let markSimbol: string = '';
 
     return (cell: ICell): ICell => {
         if (cell.topicId) {
             const mark = marks.find(x => x.topicId == cell.topicId);
-            if (mark) {
-               // cell.mark = mark;
+            if (mark) {          
                 markSimbol = markToSimbol(mark.mark);            
                 topicId = cell.topicId + '-' + markSimbol.split('-')[0];
             } else {
@@ -40,13 +99,6 @@ export function preMerge(marks: IMarks[]): any {
     }
 }
 
-export function merge(cell: ICell, marks: IMarks[]): ICell {
-    if (cell.topicId) {
-        const mark = marks.find(x => x.topicId == cell.topicId);
-        cell.mark = mark ? mark.mark : undefined;
-    }
-    return cell;
-}
 
 export class Cell implements ICell {
 
@@ -112,10 +164,6 @@ function markToSimbol(mark: number | undefined): string {
     return simbol;
 }
 
-function getRandomInt(min = 1, max = 3): number {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
 function countChildren(data: any) {
     if (data.children) {
         let count = 0;
@@ -129,45 +177,7 @@ function countChildren(data: any) {
     }
 }
 
-interface IMarks {
-    topicId: string,
-    mark: number,
-}
-export function generateMarks(data: any): IMarks[] {
-    const marks: IMarks[] = [];
-    for (const [key, value] of Object.entries(data)) {
-        console.log(`${key}: ${value}`);
-        const v: any = value;
-        if (v.columns) {
-            marks.push({ topicId: key, mark: getRandomInt(50, 100), });
-        }
-    }
 
-    return marks;
-}
-
-export interface ICombo {
-    code: string,
-    value: string,
-}
-export function buildCombo(data: any): ICombo[] {
-    const list: ICombo[] = [];
-
-    for (const name in data) {
-        if (data.hasOwnProperty(name) && Object.keys(data[name]).length > 1) {
-
-            const item = {
-                code: name,
-                value: data[name][Object.keys(data[name])[0]].name as string,
-            }
-
-            list.push(item);
-
-        }
-    }
-
-    return list;
-}
 //'-KWOsp--qGP9CH5gAS5e'
 //'-KWOZhsgcwesWJ2cLFqB'
 
@@ -175,38 +185,10 @@ export function buildGrid(data: any): Cell[] {
     const items: Cell[] = [];
     let startRow = 2;
 
-    console.log('data', data);
     const key = Object.keys(data)[0];
-
-
-    function getRandomMark(): any {
-        let count = 1;
-        const mark = getRandomInt();
-
-        return (): string => {
-            let markRet = '';
-            if (count === mark) {
-                switch (mark) {
-                    case 1:
-                        markRet = 'Mark70';
-                        break;
-                    case 2:
-                        markRet = 'Mark80';
-                        break;
-                    case 3:
-                        markRet = 'Mark100';
-                        break;
-                }
-            }
-            count += 1;
-            return markRet;
-        }
-    }
 
     function buildColumns(item: any) {
         if (item.columns) {
-            //item.topicId;
-            const f = getRandomMark();
             items.push(new Cell(item.topicId + '-one', item.columns.cm1, 'cell '));
             items.push(new Cell(item.topicId + '-two', item.columns.cm2, 'cell '));
             items.push(new Cell(item.topicId + '-three', item.columns.cm3, 'cell '));

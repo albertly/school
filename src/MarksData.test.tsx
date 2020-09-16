@@ -1,4 +1,4 @@
-import {  buildGrid, buildCombo, preMerge, generateMarks, Cell } from './MarksData';
+import {  buildGrid, buildCombo, preMerge, generateMarks, Cell, getSubjectsForStudent } from './MarksData';
 import data from '../all1.json'
 
 describe.only('Main Table', () => {
@@ -47,7 +47,7 @@ describe.only('Main Table', () => {
       console.log(v);
    })
 
-   it.only('should generate marks', () => {
+   it('should generate marks', () => {
 
       let v: any =  '-KWOsozzNKWfrlMj3eHc';
       let a: any = data.d.b.d;
@@ -62,4 +62,11 @@ describe.only('Main Table', () => {
       console.log('marks', marks);
       console.log('cells', cells);
    })
+
+   it.only('should get subjects for student', () => {
+      const v = getSubjectsForStudent(data.d.b.d);
+      expect(v.length).toBe(11);
+   })
+
+
 });

@@ -31,6 +31,7 @@ const useStyles = makeStyles((theme: Theme) => {
     })
 });
 
+//o[Object.keys(o)[0]].name
 export default function SelectedListItem() {
     const classes = useStyles();
     useStylesMui();
